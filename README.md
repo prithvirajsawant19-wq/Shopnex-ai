@@ -1,24 +1,24 @@
-# ShopSmart AI — Android Studio project
+# Shopnex AI — Android Studio project
 
-This wraps the existing ShopSmart AI HTML/CSS/JavaScript prototype in a simple Android WebView app so it can be built as an APK and installed on an Android tablet.
+This wraps the existing Shopnex AI HTML/CSS/JavaScript prototype in a simple Android WebView app so it can be built as an APK and installed on an Android tablet.
 
 ## Important
 This ZIP is the **Android app source project**, not a precompiled APK. Building an APK requires Android Studio and the Android SDK. This environment has prepared the project files but has not compiled or tested an APK on a physical device.
 
 ## Build an APK
 1. On a Windows, Mac or Linux computer, install the latest stable Android Studio: https://developer.android.com/studio
-2. Extract `ShopSmart-AI-Android.zip`.
-3. In Android Studio choose **Open** and select the extracted `ShopSmart-AI-Android` folder.
+2. Extract `Shopnex-AI-Android.zip`.
+3. In Android Studio choose **Open** and select the extracted `Shopnex-AI-Android` folder.
 4. Allow Android Studio to sync Gradle and install Android SDK Platform 35 if prompted.
 5. If prompted to use a newer compatible Gradle/Android Gradle Plugin, accept Android Studio's recommended upgrade.
 6. Select **Build > Build Bundle(s) / APK(s) > Build APK(s)**.
 7. When the build finishes, click **locate** in the notification. The APK is normally at:
    `app/build/outputs/apk/debug/app-debug.apk`
 8. Transfer `app-debug.apk` to your Android tablet, open it, and allow installation from that file manager if Android asks.
-9. Launch **ShopSmart AI** from the tablet app drawer.
+9. Launch **Shopnex AI** from the tablet app drawer.
 
 ## What this app does
-- Opens the ShopSmart AI prototype as an Android app.
+- Opens the Shopnex AI prototype as an Android app.
 - Uses the tablet's screen size and responsive layout.
 - Enables JavaScript and browser local storage for the prototype.
 - Keeps the sample inventory and recorded sales in the app's local WebView storage.
@@ -32,6 +32,6 @@ This ZIP is the **Android app source project**, not a precompiled APK. Building 
 
 ## Project layout
 - `app/src/main/assets/` — index.html, style.css, script.js
-- `app/src/main/java/com/shopsmart/ai/MainActivity.kt` — Android WebView host
+- `app/src/main/java/com/shopnex/ai/MainActivity.kt` — Android WebView host
 - `app/src/main/AndroidManifest.xml` — app configuration
 - `app/build.gradle` — Android build configuration
