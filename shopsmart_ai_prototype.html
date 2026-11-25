@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShopSmart AI — Kirana Manager</title>
+<style>
+:root{--bg:#f5f7f6;--card:#fff;--ink:#17231e;--muted:#718078;--line:#e5ebe7;--green:#176b4a;--green2:#e7f4ed;--amber:#fff3d8;--red:#fdebea;--shadow:0 8px 28px rgba(20,45,32,.06)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;font-weight:650}.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}.side{background:#123d2d;color:#fff;padding:24px 16px;display:flex;flex-direction:column;gap:24px}.brand{font-size:20px;font-weight:800;letter-spacing:-.5px;padding:0 10px}.brand small{display:block;color:#b7d5c5;font-size:11px;font-weight:500;letter-spacing:1.5px;margin-top:3px}.nav{display:grid;gap:7px}.nav button{background:transparent;color:#d9e9e0;text-align:left;padding:12px;border-radius:10px}.nav button.active,.nav button:hover{background:#285b46;color:#fff}.side-note{margin-top:auto;color:#b7d5c5;font-size:12px;padding:10px}.main{padding:28px;max-width:1400px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:24px}.eyebrow{color:var(--green);font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase}.top h1{font-size:27px;letter-spacing:-.8px;margin:4px 0}.sub{color:var(--muted);margin:0}.pill{background:var(--green2);color:var(--green);padding:7px 11px;border-radius:30px;font-size:12px;font-weight:700}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}.metric-label{font-size:12px;color:var(--muted);font-weight:650}.metric{font-size:27px;font-weight:800;margin:7px 0 2px;letter-spacing:-.7px}.hint{font-size:12px;color:var(--muted)}.layout{display:grid;grid-template-columns:1.45fr 1fr;gap:16px}.section-title{font-size:16px;font-weight:800;margin:0 0 14px}.barrow{display:grid;grid-template-columns:95px 1fr 65px;gap:10px;align-items:center;margin:13px 0;font-size:12px}.track{height:9px;background:#edf1ee;border-radius:20px;overflow:hidden}.fill{height:100%;background:#2b9166;border-radius:20px}.alert{padding:12px;border-radius:12px;background:var(--amber);font-size:13px;margin:9px 0}.alert.red{background:var(--red)}.insight{background:#eff7f2;border:1px solid #dcece2;border-radius:13px;padding:14px;margin-top:12px;font-size:13px}.toolbar{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:18px 0}.primary{background:var(--green);color:#fff}.secondary{background:#edf3ef;color:#24543e}.danger{background:#fff0ef;color:#a23c35}.tablewrap{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:14px}.table{width:100%;border-collapse:collapse;min-width:620px}.table th,.table td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line);font-size:13px}.table th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.7px;background:#fbfcfb}.status{display:inline-block;padding:4px 8px;border-radius:20px;font-size:11px;font-weight:750}.ok{background:var(--green2);color:var(--green)}.low{background:var(--amber);color:#95620b}.formrow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.field{display:grid;gap:5px}.field label{font-size:12px;color:var(--muted);font-weight:700}.field input,.field select{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px;background:#fff;min-width:0}.form-actions{display:flex;gap:8px;align-items:end}.hidden{display:none!important}.empty{color:var(--muted);padding:25px;text-align:center}.chatbox{display:grid;gap:12px}.chatanswer{background:#eff7f2;border-radius:13px;padding:15px;font-size:14px;min-height:90px}.quick{display:flex;flex-wrap:wrap;gap:8px}.quick button{font-size:12px}.foot{font-size:11px;color:var(--muted);margin-top:20px}
+@media(max-width:850px){.app{grid-template-columns:1fr}.side{padding:13px 14px;gap:10px}.brand{padding:0 4px}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap;padding:9px 11px}.side-note{display:none}.main{padding:18px 14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.layout{grid-template-columns:1fr}.formrow{grid-template-columns:repeat(2,1fr)}.top h1{font-size:23px}}
+@media(max-width:420px){.formrow{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}.metric{font-size:23px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+  <div class="brand">ShopSmart AI<small>KIRANA BUSINESS MANAGER</small></div>
+  <nav class="nav">
+    <button class="active" data-page="dashboard">▦ &nbsp; Overview</button>
+    <button data-page="inventory">▤ &nbsp; Inventory</button>
+    <button data-page="sales">₹ &nbsp; Record sale</button>
+    <button data-page="advisor">✦ &nbsp; AI Advisor</button>
+  </nav>
+  <div class="side-note">Prototype v0.1<br>Sample data is stored in this browser.</div>
+</aside>
+<main class="main">
+  <header class="top">
+    <div><div class="eyebrow">Your shop at a glance</div><h1 id="pageTitle">Good day, shop owner 👋</h1><p class="sub" id="pageSub">Here is what's happening in your kirana store.</p></div>
+    <span class="pill">● Demo mode</span>
+  </header>
+
+  <section id="dashboard" class="page">
+    <div class="grid">
+      <div class="card"><div class="metric-label">Today's sales</div><div class="metric" id="todaySales">₹0</div><div class="hint">Recorded in this demo</div></div>
+      <div class="card"><div class="metric-label">Estimated gross profit</div><div class="metric" id="grossProfit">₹0</div><div class="hint">Based on entered cost prices</div></div>
+      <div class="card"><div class="metric-label">Products in catalogue</div><div class="metric" id="productCount">0</div><div class="hint">Unique products</div></div>
+      <div class="card"><div class="metric-label">Low-stock products</div><div class="metric" id="lowCount">0</div><div class="hint">At or below reorder level</div></div>
+    </div>
+    <div class="layout">
+      <div class="card"><h2 class="section-title">Sales by product</h2><div id="salesBars"></div><div class="hint">Based on sales recorded in this browser.</div></div>
+      <div class="card"><h2 class="section-title">Needs your attention</h2><div id="alerts"></div><div class="insight"><strong>ShopSmart suggestion</strong><br><span id="dashboardInsight">Add sales and stock details to receive useful suggestions.</span></div></div>
+    </div>
+  </section>
+
+  <section id="inventory" class="page hidden">
+    <div class="toolbar"><div><h2 class="section-title" style="margin:0">Product inventory</h2><div class="hint">Keep stock and reorder levels up to date.</div></div><button class="primary" id="showAdd">＋ Add product</button></div>
+    <div class="card hidden" id="addPanel" style="margin-bottom:14px">
+      <h3 class="section-title">Add a product</h3>
+      <form id="productForm" class="formrow">
+        <div class="field"><label>Product name</label><input id="pName" placeholder="e.g. Toor Dal 1kg" required></div>
+        <div class="field"><label>Selling price (₹)</label><input id="pPrice" type="number" min="0.01" step=".01" required></div>
+        <div class="field"><label>Cost price (₹)</label><input id="pCost" type="number" min="0" step=".01" required></div>
+        <div class="field"><label>Current stock (units)</label><input id="pStock" type="number" min="0" step="1" required></div>
+        <div class="field"><label>Reorder level</label><input id="pReorder" type="number" min="0" step="1" value="5" required></div>
+        <div class="form-actions"><button class="primary" type="submit">Save product</button><button class="secondary" type="button" id="cancelAdd">Cancel</button></div>
+      </form>
+    </div>
+    <div class="tablewrap"><table class="table"><thead><tr><th>Product</th><th>Selling price</th><th>Cost price</th><th>Stock</th><th>Status</th><th>Action</th></tr></thead><tbody id="inventoryRows"></tbody></table></div>
+  </section>
+
+  <section id="sales" class="page hidden">
+    <div class="card">
+      <h2 class="section-title">Record a sale</h2><p class="sub" style="margin-bottom:16px">Choose a product and quantity. Stock and sales totals update automatically.</p>
+      <form id="saleForm" class="formrow">
+        <div class="field"><label>Product</label><select id="saleProduct" required></select></div>
+        <div class="field"><label>Quantity sold</label><input id="saleQty" type="number" min="1" step="1" value="1" required></div>
+        <div class="field"><label>Payment method</label><select id="salePayment"><option>Cash</option><option>UPI</option><option>Card</option><option>Credit / Udhaar</option></select></div>
+        <div class="form-actions"><button class="primary" type="submit">＋ Save sale</button></div>
+      </form>
+      <div class="insight" id="saleFeedback">A sale will reduce available stock and update your dashboard.</div>
+    </div>
+    <div class="toolbar"><h2 class="section-title" style="margin:0">Recent sales</h2></div>
+    <div class="tablewrap"><table class="table"><thead><tr><th>Date & time</th><th>Product</th><th>Qty</th><th>Amount</th><th>Payment</th></tr></thead><tbody id="salesRows"></tbody></table></div>
+  </section>
+
+  <section id="advisor" class="page hidden">
+    <div class="card chatbox">
+      <div><h2 class="section-title">Your business advisor ✦</h2><p class="sub">Ask a question about your shop. This first version uses your demo data and built-in business rules; live AI will be connected in a later version.</p></div>
+      <div class="quick">
+        <button class="secondary" data-question="What should I reorder?">What should I reorder?</button>
+        <button class="secondary" data-question="How are my sales?">How are my sales?</button>
+        <button class="secondary" data-question="Which products are slow moving?">Slow-moving products?</button>
+        <button class="secondary" data-question="How can I improve profit?">How can I improve profit?</button>
+      </div>
+      <div class="field"><label>Your question</label><input id="question" placeholder="e.g. Which products need attention?"></div>
+      <div><button class="primary" id="askBtn">Get suggestion</button></div>
+      <div class="chatanswer" id="answer">Your business suggestions will appear here. Try one of the example questions above.</div>
+    </div>
+    <p class="foot">Important: Suggestions are indicative and based only on information entered into this prototype. Verify stock and financial decisions before acting.</p>
+  </section>
+  <p class="foot">ShopSmart AI prototype • No account or cloud sync • Data stays in this browser on this device.</p>
+</main>
+</div>
+<script>
+const starterProducts=[
+ {id:1,name:"Toor Dal 1kg",price:145,cost:118,stock:4,reorder:8},
+ {id:2,name:"Rice 5kg",price:320,cost:275,stock:18,reorder:6},
+ {id:3,name:"Sunflower Oil 1L",price:145,cost:126,stock:5,reorder:8},
+ {id:4,name:"Sugar 1kg",price:48,cost:41,stock:22,reorder:8},
+ {id:5,name:"Tea 250g",price:125,cost:98,stock:12,reorder:5},
+ {id:6,name:"Bath Soap",price:38,cost:29,stock:3,reorder:10}
+];
+let products=JSON.parse(localStorage.getItem("ss_products")||"null")||starterProducts;
+let sales=JSON.parse(localStorage.getItem("ss_sales")||"[]");
+const money=n=>"₹"+Number(n||0).toLocaleString("en-IN",{maximumFractionDigits:2});
+const save=()=>{localStorage.setItem("ss_products",JSON.stringify(products));localStorage.setItem("ss_sales",JSON.stringify(sales));};
+const today=()=>new Date().toDateString();
+function render(){
+ const todays=sales.filter(s=>new Date(s.time).toDateString()===today());
+ const revenue=todays.reduce((a,s)=>a+s.amount,0),profit=todays.reduce((a,s)=>a+s.profit,0);
+ document.getElementById("todaySales").textContent=money(revenue);
+ document.getElementById("grossProfit").textContent=money(profit);
+ document.getElementById("productCount").textContent=products.length;
+ const low=products.filter(p=>p.stock<=p.reorder);
+ document.getElementById("lowCount").textContent=low.length;
+ document.getElementById("alerts").innerHTML=low.length?low.map(p=>`<div class="alert ${p.stock===0?'red':''}"><strong>${esc(p.name)}</strong><br>${p.stock===0?'Out of stock':p.stock+' units left'} · reorder level ${p.reorder}</div>`).join(""):'<div class="insight">✓ No low-stock alerts right now.</div>';
+ document.getElementById("dashboardInsight").textContent=low.length?`Check ${low.map(p=>p.name).join(", ")}. Consider reviewing supplier lead times before reordering.`:"Your current stock is above its reorder levels. Keep recording sales to build a useful sales history.";
+ const totals={};sales.forEach(s=>totals[s.name]=(totals[s.name]||0)+s.amount);
+ const best=Object.entries(totals).sort((a,b)=>b[1]-a[1]).slice(0,5),max=Math.max(1,...best.map(x=>x[1]));
+ document.getElementById("salesBars").innerHTML=best.length?best.map(([n,v])=>`<div class="barrow"><span>${esc(n)}</span><div class="track"><div class="fill" style="width:${v/max*100}%"></div></div><strong>${money(v)}</strong></div>`).join(""):'<div class="empty">No sales yet. Record a sale to see product performance.</div>';
+ document.getElementById("inventoryRows").innerHTML=products.length?products.map(p=>`<tr><td><strong>${esc(p.name)}</strong></td><td>${money(p.price)}</td><td>${money(p.cost)}</td><td>${p.stock}</td><td><span class="status ${p.stock<=p.reorder?'low':'ok'}">${p.stock<=p.reorder?(p.stock===0?'Out of stock':'Low stock'):'In stock'}</span></td><td><button class="danger" onclick="removeProduct(${p.id})">Remove</button></td></tr>`).join(""):'<tr><td colspan="6" class="empty">No products. Add your first product.</td></tr>';
+ document.getElementById("saleProduct").innerHTML=products.map(p=>`<option value="${p.id}">${esc(p.name)} · ${money(p.price)} · ${p.stock} in stock</option>`).join("");
+ document.getElementById("salesRows").innerHTML=sales.slice().reverse().slice(0,20).map(s=>`<tr><td>${new Date(s.time).toLocaleString("en-IN")}</td><td>${esc(s.name)}</td><td>${s.qty}</td><td>${money(s.amount)}</td><td>${esc(s.payment)}</td></tr>`).join("")||'<tr><td colspan="5" class="empty">No sales recorded yet.</td></tr>';
+}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function removeProduct(id){if(confirm("Remove this product from inventory? Past sales will remain.")){products=products.filter(p=>p.id!==id);save();render();}}
+window.removeProduct=removeProduct;
+document.querySelectorAll(".nav button").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll(".page").forEach(x=>x.classList.add("hidden"));document.getElementById(b.dataset.page).classList.remove("hidden");const titles={dashboard:["Good day, shop owner 👋","Here is what's happening in your kirana store."],inventory:["Inventory","Manage products, prices and stock levels."],sales:["Record a sale","Keep your daily sales and stock up to date."],advisor:["AI Business Advisor","Turn your shop data into practical next steps."]};document.getElementById("pageTitle").textContent=titles[b.dataset.page][0];document.getElementById("pageSub").textContent=titles[b.dataset.page][1];}));
+document.getElementById("showAdd").onclick=()=>document.getElementById("addPanel").classList.remove("hidden");
+document.getElementById("cancelAdd").onclick=()=>document.getElementById("addPanel").classList.add("hidden");
+document.getElementById("productForm").onsubmit=e=>{e.preventDefault();const name=document.getElementById("pName").value.trim(),price=+document.getElementById("pPrice").value,cost=+document.getElementById("pCost").value,stock=+document.getElementById("pStock").value,reorder=+document.getElementById("pReorder").value;if(!name||price<=0||cost<0||stock<0||reorder<0)return;products.push({id:Date.now(),name,price,cost,stock,reorder});save();e.target.reset();document.getElementById("pReorder").value=5;document.getElementById("addPanel").classList.add("hidden");render();};
+document.getElementById("saleForm").onsubmit=e=>{e.preventDefault();const id=+document.getElementById("saleProduct").value,p=products.find(x=>x.id===id),qty=+document.getElementById("saleQty").value;if(!p||qty<1)return;if(qty>p.stock){document.getElementById("saleFeedback").textContent=`Not enough stock. Only ${p.stock} units of ${p.name} are available.`;return;}const amount=p.price*qty,profit=(p.price-p.cost)*qty;p.stock-=qty;sales.push({time:new Date().toISOString(),id:p.id,name:p.name,qty,amount,profit,payment:document.getElementById("salePayment").value});save();render();document.getElementById("saleFeedback").textContent=`Sale saved: ${qty} × ${p.name} = ${money(amount)}. Estimated gross profit: ${money(profit)}.`;document.getElementById("saleQty").value=1;};
+function advise(q){const low=products.filter(p=>p.stock<=p.reorder),sorted=products.slice().sort((a,b)=>b.stock-a.stock),sold={};sales.forEach(s=>sold[s.id]=(sold[s.id]||0)+s.qty);const noSales=products.filter(p=>!sold[p.id]);let answer="";
+if(/reorder|stock|low/i.test(q)){answer=low.length?`These products are at or below their reorder level: ${low.map(p=>`${p.name} (${p.stock} left; reorder level ${p.reorder})`).join("; ")}. Check current demand and supplier delivery time, then decide the purchase quantity.`:"No products are currently below their reorder level. Keep recording sales so reorder suggestions become more useful.";}
+else if(/slow|not selling|unsold/i.test(q)){answer=noSales.length?`No sales have been recorded for: ${noSales.map(p=>p.name).join(", ")}. This does not prove they are slow-moving; record sales over several weeks before deciding. Consider checking expiry dates and shelf placement.`:"Sales have been recorded for all listed products. Compare quantities sold over a consistent period to identify slow movers.";}
+else if(/profit|margin|improve/i.test(q)){const margins=products.map(p=>({name:p.name,margin:p.price-p.cost})).sort((a,b)=>b.margin-a.margin);answer=`Your highest gross-profit amount per unit is ${margins[0]?.name||"not available"} (${money(margins[0]?.margin||0)} per unit). Review supplier prices, wastage, discounts and product mix. Gross profit here excludes rent, wages and other overheads.`;}
+else if(/sales|revenue|how are/i.test(q)){const total=sales.reduce((a,s)=>a+s.amount,0),qty=sales.reduce((a,s)=>a+s.qty,0);answer=`You have recorded ${money(total)} in sales across ${sales.length} transactions (${qty} units). This is demo history only; compare the same weekdays across multiple weeks for a fair trend.`;}
+else{answer=`I can help with stock, sales and profit. You currently have ${products.length} products, ${low.length} low-stock items and ${sales.length} recorded sales. Try asking: “What should I reorder?” or “How can I improve profit?”`;}
+document.getElementById("answer").textContent=answer;}
+document.getElementById("askBtn").onclick=()=>{const q=document.getElementById("question").value.trim();if(q)advise(q);};
+document.getElementById("question").addEventListener("keydown",e=>{if(e.key==="Enter")document.getElementById("askBtn").click();});
+document.querySelectorAll("[data-question]").forEach(b=>b.onclick=()=>{document.getElementById("question").value=b.dataset.question;advise(b.dataset.question);});
+render();
+</script>
+</body>
+</html>

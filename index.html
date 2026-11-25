@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShopSmart AI — Kirana Manager</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<aside class="side">
+  <div class="brand">ShopSmart AI<small>KIRANA BUSINESS MANAGER</small></div>
+  <nav class="nav">
+    <button class="active" data-page="dashboard">▦ &nbsp; Overview</button>
+    <button data-page="inventory">▤ &nbsp; Inventory</button>
+    <button data-page="sales">₹ &nbsp; Record sale</button>
+    <button data-page="advisor">✦ &nbsp; AI Advisor</button>
+  </nav>
+  <div class="side-note">Prototype v0.1<br>Sample data is stored in this browser.</div>
+</aside>
+<main class="main">
+  <header class="top">
+    <div><div class="eyebrow">Your shop at a glance</div><h1 id="pageTitle">Good day, shop owner 👋</h1><p class="sub" id="pageSub">Here is what's happening in your kirana store.</p></div>
+    <span class="pill">● Demo mode</span>
+  </header>
+
+  <section id="dashboard" class="page">
+    <div class="grid">
+      <div class="card"><div class="metric-label">Today's sales</div><div class="metric" id="todaySales">₹0</div><div class="hint">Recorded in this demo</div></div>
+      <div class="card"><div class="metric-label">Estimated gross profit</div><div class="metric" id="grossProfit">₹0</div><div class="hint">Based on entered cost prices</div></div>
+      <div class="card"><div class="metric-label">Products in catalogue</div><div class="metric" id="productCount">0</div><div class="hint">Unique products</div></div>
+      <div class="card"><div class="metric-label">Low-stock products</div><div class="metric" id="lowCount">0</div><div class="hint">At or below reorder level</div></div>
+    </div>
+    <div class="layout">
+      <div class="card"><h2 class="section-title">Sales by product</h2><div id="salesBars"></div><div class="hint">Based on sales recorded in this browser.</div></div>
+      <div class="card"><h2 class="section-title">Needs your attention</h2><div id="alerts"></div><div class="insight"><strong>ShopSmart suggestion</strong><br><span id="dashboardInsight">Add sales and stock details to receive useful suggestions.</span></div></div>
+    </div>
+  </section>
+
+  <section id="inventory" class="page hidden">
+    <div class="toolbar"><div><h2 class="section-title" style="margin:0">Product inventory</h2><div class="hint">Keep stock and reorder levels up to date.</div></div><button class="primary" id="showAdd">＋ Add product</button></div>
+    <div class="card hidden" id="addPanel" style="margin-bottom:14px">
+      <h3 class="section-title">Add a product</h3>
+      <form id="productForm" class="formrow">
+        <div class="field"><label>Product name</label><input id="pName" placeholder="e.g. Toor Dal 1kg" required></div>
+        <div class="field"><label>Selling price (₹)</label><input id="pPrice" type="number" min="0.01" step=".01" required></div>
+        <div class="field"><label>Cost price (₹)</label><input id="pCost" type="number" min="0" step=".01" required></div>
+        <div class="field"><label>Current stock (units)</label><input id="pStock" type="number" min="0" step="1" required></div>
+        <div class="field"><label>Reorder level</label><input id="pReorder" type="number" min="0" step="1" value="5" required></div>
+        <div class="form-actions"><button class="primary" type="submit">Save product</button><button class="secondary" type="button" id="cancelAdd">Cancel</button></div>
+      </form>
+    </div>
+    <div class="tablewrap"><table class="table"><thead><tr><th>Product</th><th>Selling price</th><th>Cost price</th><th>Stock</th><th>Status</th><th>Action</th></tr></thead><tbody id="inventoryRows"></tbody></table></div>
+  </section>
+
+  <section id="sales" class="page hidden">
+    <div class="card">
+      <h2 class="section-title">Record a sale</h2><p class="sub" style="margin-bottom:16px">Choose a product and quantity. Stock and sales totals update automatically.</p>
+      <form id="saleForm" class="formrow">
+        <div class="field"><label>Product</label><select id="saleProduct" required></select></div>
+        <div class="field"><label>Quantity sold</label><input id="saleQty" type="number" min="1" step="1" value="1" required></div>
+        <div class="field"><label>Payment method</label><select id="salePayment"><option>Cash</option><option>UPI</option><option>Card</option><option>Credit / Udhaar</option></select></div>
+        <div class="form-actions"><button class="primary" type="submit">＋ Save sale</button></div>
+      </form>
+      <div class="insight" id="saleFeedback">A sale will reduce available stock and update your dashboard.</div>
+    </div>
+    <div class="toolbar"><h2 class="section-title" style="margin:0">Recent sales</h2></div>
+    <div class="tablewrap"><table class="table"><thead><tr><th>Date & time</th><th>Product</th><th>Qty</th><th>Amount</th><th>Payment</th></tr></thead><tbody id="salesRows"></tbody></table></div>
+  </section>
+
+  <section id="advisor" class="page hidden">
+    <div class="card chatbox">
+      <div><h2 class="section-title">Your business advisor ✦</h2><p class="sub">Ask a question about your shop. This first version uses your demo data and built-in business rules; live AI will be connected in a later version.</p></div>
+      <div class="quick">
+        <button class="secondary" data-question="What should I reorder?">What should I reorder?</button>
+        <button class="secondary" data-question="How are my sales?">How are my sales?</button>
+        <button class="secondary" data-question="Which products are slow moving?">Slow-moving products?</button>
+        <button class="secondary" data-question="How can I improve profit?">How can I improve profit?</button>
+      </div>
+      <div class="field"><label>Your question</label><input id="question" placeholder="e.g. Which products need attention?"></div>
+      <div><button class="primary" id="askBtn">Get suggestion</button></div>
+      <div class="chatanswer" id="answer">Your business suggestions will appear here. Try one of the example questions above.</div>
+    </div>
+    <p class="foot">Important: Suggestions are indicative and based only on information entered into this prototype. Verify stock and financial decisions before acting.</p>
+  </section>
+  <p class="foot">ShopSmart AI prototype • No account or cloud sync • Data stays in this browser on this device.</p>
+</main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
